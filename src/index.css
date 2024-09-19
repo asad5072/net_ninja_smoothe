@@ -32,3 +32,16 @@ nav h1 {
   margin: 20px auto;
   padding: 20px;
 }
+.grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1140px;
+  margin: auto;
+  margin-top: 20px;
+}
+.border{
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 16px;
+}
