@@ -6,6 +6,13 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null);
   const [smoothies, setSmoothies] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [orderBy, setOrderby] = useState('created_at')
+
+  const handleDelete = (id)=>{
+    setSmoothies(previousItems =>{
+      return previousItems.filter(item => item.id !==id)
+    })
+  }
 
   useEffect(() => {
     const fetchSmoothies = async () => {
@@ -36,11 +43,17 @@ const Home = () => {
       {loading && <p>Loading...</p>}
       {fetchError && <p>{fetchError}</p>}
       {smoothies && (
-        <div className="grid">
-          {smoothies.map(smoothie => (
-            <Smothe smoothie={smoothie} key={smoothie.id} />
-          ))}
-        </div>
+        <div>
+          <div className="grid">
+            {smoothies.map(smoothie => (
+              <Smothe smoothie={smoothie} 
+                key={smoothie.id}
+                onDelete= {handleDelete}
+              />
+            ))}
+          </div>
+
+        </div>        
       )}
     </div>
   );

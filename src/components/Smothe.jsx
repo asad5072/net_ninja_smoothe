@@ -3,7 +3,7 @@ import supabase from "../config/supabaseClient"
 
 
 
-const Smothe = ({smoothie})=>{
+const Smothe = ({smoothie, onDelete})=>{
     const handleDelete = async()=>{
         const {data, error} = await supabase
         .from('recipes')
@@ -16,6 +16,7 @@ const Smothe = ({smoothie})=>{
         }
         if(data){
             console.log(data)
+            onDelete(smoothie.id)
         }
     }
 
